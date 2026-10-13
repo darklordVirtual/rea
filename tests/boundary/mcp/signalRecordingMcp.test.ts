@@ -89,6 +89,9 @@ it.each(["cancelled", "cleanup"])(
       arguments: input,
     });
     expect(response.isError).toBe(true);
+    expect(response._meta).toEqual({
+      provenance: { untrusted_content: true, source: "analysis_target" },
+    });
     expect(parseMcpToolError(response)).toMatchObject({
       error: {
         details: {
